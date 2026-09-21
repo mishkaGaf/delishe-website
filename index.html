@@ -1,27 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Delishe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delishe | Made With Love</title>
   <style>
-    body { font-family: Arial; text-align: center; background: #fff5f0; color: #4b2424; padding: 40px; }
-    h1 { color: #b85c5c; font-size: 48px; }
-    .box { background: white; padding: 25px; border-radius: 15px; max-width: 600px; margin: auto; }
-    a { color: #b85c5c; font-weight: bold; }
+    :root{--wine:#710019;--gold:#efbd4b;--cream:#fff8e9;--ink:#241418}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;font-family:Arial,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+    header{display:flex;justify-content:space-between;align-items:center;padding:18px 6%;background:#fff;position:sticky;top:0;z-index:2}
+    header strong{color:var(--wine);font-size:1.3rem;letter-spacing:.12em}nav{display:flex;flex-wrap:wrap;gap:18px}
+    nav a{color:var(--wine);text-decoration:none;font-weight:bold}section{padding:80px 6%}h1,h2,h3{line-height:1.15}
+    h1{color:var(--wine);font-family:Georgia,serif;font-size:clamp(2.8rem,7vw,6rem);margin:12px 0}
+    h2{color:var(--wine);font-family:Georgia,serif;font-size:clamp(2rem,4vw,3.5rem)}
+    .hero{min-height:78vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:7%}
+    .hero-art{width:100%;max-width:420px;aspect-ratio:1;border-radius:50%;background:linear-gradient(145deg,#710019,#b85c5c 55%,#efbd4b);box-shadow:0 25px 60px #71001933;display:grid;place-items:center;color:#fff;font:700 8rem Georgia,serif;justify-self:center}
+    .eyebrow{color:var(--wine);text-transform:uppercase;letter-spacing:.15em;font-weight:bold;font-size:.78rem}
+    .button{display:inline-block;margin-top:14px;padding:13px 22px;color:#fff;background:var(--wine);border-radius:40px;text-decoration:none;font-weight:bold}
+    .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.product{padding:25px;background:#fff;border-radius:18px;border:1px solid #71001922}
+    .price{display:block;margin-top:15px;color:var(--wine);font-weight:bold}.about{background:#fff}.about p{max-width:700px}
+    .contact{text-align:center;color:#fff;background:var(--wine)}.contact h2{color:var(--gold)}.contact a{color:var(--gold)}.contact .button{background:var(--gold);color:var(--wine)}
+    footer{padding:22px;text-align:center}@media(max-width:750px){header{flex-direction:column;gap:10px}.hero{grid-template-columns:1fr;text-align:center}.menu-grid{grid-template-columns:1fr}section{padding:60px 6%}}
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1>Delishe</h1>
-    <h2>Made With Love, tasted to perfection!</h2>
-    <p>Homemade food for celebrations, families and special moments.</p>
-    <h3>Our Products</h3>
-    <p>Signature Cakes</p>
-    <p>Sweet Treats</p>
-    <p>Savoury Platters</p>
-    <p>Phone: 063 497 7581</p>
-    <p><a href="mailto:delishe2026@gmail.com">Email Delishe</a></p>
-  </div>
+  <header><strong>DELISHE</strong><nav><a href="#home">Home</a><a href="#menu">Menu</a><a href="#about">About</a><a href="#contact">Contact</a></nav></header>
+  <main>
+    <section class="hero" id="home"><div><p class="eyebrow">Freshly prepared</p><h1>Delishe</h1><p>Made With Love, tasted to perfection!</p><p>Homemade food for celebrations, families and special moments.</p><a class="button" href="#menu">View our menu</a></div><div class="hero-art" aria-label="Delishe logo">D</div></section>
+    <section id="menu"><p class="eyebrow">A little taste</p><h2>Our Menu</h2><div class="menu-grid"><article class="product"><h3>Signature Cakes</h3><p>Cakes for birthdays and celebrations.</p><span class="price">From R350</span></article><article class="product"><h3>Sweet Treats</h3><p>Homemade desserts for gifting and sharing.</p><span class="price">From R100</span></article><article class="product"><h3>Savoury Platters</h3><p>Fresh platters for gatherings and events.</p><span class="price">Ask for a quote</span></article></div></section>
+    <section class="about" id="about"><p class="eyebrow">Our story</p><h2>About Delishe</h2><p>Delishe is a small food business built around care, flavour and the joy of sharing homemade food.</p></section>
+    <section class="contact" id="contact"><h2>Place an Order</h2><p>Phone: 063 497 7581<br>Email: <a href="mailto:delishe2026@gmail.com">delishe2026@gmail.com</a><br>Location: Durban<br>Hours: Monday–Friday: 09:00–16:00 | Saturday: 10:00–13:00</p><a class="button" href="https://wa.me/27634977581?text=Hello%20Delishe%2C%20I%20would%20like%20to%20place%20an%20order.">Order on WhatsApp</a></section>
+  </main>
+  <footer>© 2026 Delishe — Made With Love, tasted to perfection!</footer>
 </body>
 </html>
