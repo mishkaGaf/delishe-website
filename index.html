@@ -126,6 +126,7 @@
         }
         .product-top { min-height:190px; overflow:hidden; background:var(--cream); }
         .product-top img { display:block; width:100%; height:190px; object-fit:cover; }
+        .product-top.placeholder { display:grid; place-items:center; height:190px; font-size:3.2rem; color:var(--wine); background:linear-gradient(135deg,#fffaf0,#fff2d8); }
         .product-body { padding:22px; }
         .product h3 { color:var(--wine); font-size:1.35rem; margin:0 0 8px; }
         .product p { color:var(--muted); margin:0; }
@@ -165,6 +166,7 @@
             background:#fffaf0;
         }
         .order-row input[type="checkbox"] { width:20px; height:20px; accent-color:var(--wine); }
+        .order-row.wide { grid-template-columns:auto 1fr 1fr 1fr 80px; }
         .order-row .item-name { font-weight:bold; color:var(--wine); }
         .order-row .qty { min-width:68px; }
         .summary { position:sticky; top:100px; }
@@ -230,6 +232,7 @@
             .form-grid { grid-template-columns:1fr; }
             .full { grid-column:auto; }
             .order-row { grid-template-columns:auto 1fr; }
+            .order-row.wide { grid-template-columns:auto 1fr; }
             .order-row select, .order-row .qty { grid-column:2; }
         }
     </style>
@@ -272,12 +275,14 @@
             <p class="eyebrow">Made for sharing</p>
             <h2>Explore the Delishé menu</h2>
             <div class="menu-grid">
-                <article class="product"><div class="product-top"><img src="./index_files/cookies.png" alt="Assorted chunky cookies in a gift box"></div><div class="product-body"><h3>Chunky Cookies</h3><p>Six indulgent flavours in boxes of 4, 6 or 12.</p><span class="price">Choose your box</span></div></article>
+                <article class="product"><div class="product-top"><img src="./index_files/cookies.png" alt="Assorted chunky cookies in a gift box"></div><div class="product-body"><h3>Chunky Cookies</h3><p>Each cookie is 90g. Choose from Classic Chocolate, Red Velvet, Lotus Biscoff, Oreo, Double Chocolate, and Pistachio with White Chocolate.</p><span class="price">R45 each &middot; Box of 4 R172 &middot; Box of 6 R240 &middot; Box of 12 R520</span></div></article>
                 <article class="product"><div class="product-top"><img src="./index_files/pies.jpg" alt="Homemade golden pies in foil containers"></div><div class="product-body"><h3>Homemade Pies</h3><p>Large and mini ready-to-bake pies in main and special flavours.</p><span class="price">From R150</span></div></article>
-                <article class="product"><div class="product-top"><img src="./index_files/samoosas.png" alt="Golden homemade triangular samoosas"></div><div class="product-body"><h3>Samoosas</h3><p>Chicken, mince, potato and cheese varieties.</p><span class="price">Price on request</span></div></article>
                 <article class="product"><div class="product-top"><img src="./index_files/crunchies.png" alt="Square homemade oat and nut crunchies"></div><div class="product-body"><h3>Crunchie Slices</h3><p>Square oat-and-nut treats available in three sizes.</p><span class="price">From R85</span></div></article>
                 <article class="product"><div class="product-top"><img src="./index_files/chevro.png" alt="Sweet and spicy homemade Chevro snack mix"></div><div class="product-body"><h3>Sweet &amp; Spicy Chevro</h3><p>A crunchy homemade snack for tea-time, lunchboxes and gifting.</p><span class="price">From R90</span></div></article>
-                <article class="product"><div class="product-top"><img src="./index_files/cupcakes.jpg" alt="Homemade cupcakes with piped frosting and sprinkles"></div><div class="product-body"><h3>Cupcakes &amp; Sweet Treats</h3><p>Homemade cupcakes with seasonal colours and finishes.</p><span class="price">Ask what is available</span></div></article>
+                <article class="product"><div class="product-top"><img src="./index_files/cupcakes.jpg" alt="Homemade cupcakes with piped frosting and sprinkles"></div><div class="product-body"><h3>Cupcakes</h3><p>Coffee, Vanilla and Chocolate, sold per dozen.</p><span class="price">Vanilla R150 &middot; Coffee R170 &middot; Chocolate R200 per dozen</span></div></article>
+                <article class="product"><div class="product-top placeholder">&#9635;</div><div class="product-body"><h3>Classic Chocolate Brownies</h3><p>Rich, fudgy homemade chocolate brownies cut into generous squares.</p><span class="price">6 pieces R156 &middot; 10 pieces R250</span></div></article>
+                <article class="product"><div class="product-top placeholder">&#9645;</div><div class="product-body"><h3>Loaf Cakes</h3><p>Date &amp; Almond Loaf and Madeira Loaf, baked fresh to order.</p><span class="price">Price on request</span></div></article>
+                <article class="product"><div class="product-top placeholder">&#9679;</div><div class="product-body"><h3>Muffins</h3><p>Blueberry &amp; Lemon, Lemon &amp; Poppy Seeds, Berries, and Bran Muffin.</p><span class="price">1 Muffin R35 &middot; Box of 6 R204&ndash;R396 &middot; Box of 12 R396</span></div></article>
             </div>
         </section>
 
@@ -295,13 +300,15 @@
 
                     <h3>Select what you want to order</h3>
                     <div class="order-products">
-                        <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Chunky Cookies</span><select class="item-option"><option>Box of 4</option><option>Box of 6</option><option>Box of 12</option></select><input class="qty" type="number" min="1" value="1" aria-label="Cookie quantity"></div>
+                        <div class="order-row wide"><input class="order-check" type="checkbox"><span class="item-name">Chunky Cookies (90g each)</span><select class="item-flavour" aria-label="Cookie flavour"><option>Classic Chocolate</option><option>Red Velvet</option><option>Lotus Biscoff</option><option>Oreo</option><option>Double Chocolate</option><option>Pistachio with White Chocolate</option></select><select class="item-option"><option>Each — R45</option><option>Box of 4 — R172</option><option>Box of 6 — R240</option><option>Box of 12 — R520</option></select><input class="qty" type="number" min="1" value="1" aria-label="Cookie quantity"></div>
                         <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Large Pies</span><select class="item-option"><option>6 Main — R280</option><option>12 Main — R540</option><option>6 Special — R300</option><option>12 Special — R588</option></select><input class="qty" type="number" min="1" value="1" aria-label="Large pie quantity"></div>
                         <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Mini Pies</span><select class="item-option"><option>6 Main — R150</option><option>12 Main — R288</option><option>6 Special — R192</option><option>12 Special — R372</option></select><input class="qty" type="number" min="1" value="1" aria-label="Mini pie quantity"></div>
-                        <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Samoosas</span><select class="item-option"><option>Chicken</option><option>Mince</option><option>Potato</option><option>Cheese</option><option>Mixed</option></select><input class="qty" type="number" min="1" value="12" aria-label="Samoosa quantity"></div>
                         <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Crunchie Slices</span><select class="item-option"><option>250g — R85</option><option>500g — R120</option><option>1kg — R200</option></select><input class="qty" type="number" min="1" value="1" aria-label="Crunchie quantity"></div>
                         <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Chevro</span><select class="item-option"><option>500g — R90</option><option>1kg — R170</option></select><input class="qty" type="number" min="1" value="1" aria-label="Chevro quantity"></div>
-                        <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Other Sweet Treats</span><select class="item-option"><option>Brownies</option><option>Cupcakes</option><option>Loaf cake</option><option>Dessert enquiry</option></select><input class="qty" type="number" min="1" value="1" aria-label="Sweet treat quantity"></div>
+                        <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Classic Chocolate Brownies</span><select class="item-option"><option>6 pieces — R156</option><option>10 pieces — R250</option></select><input class="qty" type="number" min="1" value="1" aria-label="Brownie quantity"></div>
+                        <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Loaf Cakes</span><select class="item-option"><option>Date &amp; Almond Loaf — Price on request</option><option>Madeira Loaf — Price on request</option></select><input class="qty" type="number" min="1" value="1" aria-label="Loaf cake quantity"></div>
+                        <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Cupcakes</span><select class="item-option"><option>Vanilla — R150 per dozen</option><option>Coffee — R170 per dozen</option><option>Chocolate — R200 per dozen</option></select><input class="qty" type="number" min="1" value="1" aria-label="Cupcake quantity (dozens)"></div>
+                        <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Muffins</span><select class="item-option"><option>1 Muffin — R35</option><option>Box of 6 — Blueberry &amp; Lemon — R204</option><option>Box of 6 — Lemon &amp; Poppy Seeds — R396</option><option>Box of 6 — Berries — R396</option><option>Box of 6 — Bran Muffin — R396</option><option>Box of 12 — Blueberry &amp; Lemon — R396</option><option>Box of 12 — Lemon &amp; Poppy Seeds — R396</option><option>Box of 12 — Berries — R396</option><option>Box of 12 — Bran Muffin — R396</option></select><input class="qty" type="number" min="1" value="1" aria-label="Muffin quantity"></div>
                     </div>
 
                     <div class="form-grid">
@@ -375,7 +382,9 @@ Please confirm availability and the final total. Thank you.</div>
                     const name = row.querySelector(".item-name").textContent;
                     const option = row.querySelector(".item-option").value;
                     const quantity = row.querySelector(".qty").value;
-                    items.push(`- ${name}: ${option} | Quantity: ${quantity}`);
+                    const flavourEl = row.querySelector(".item-flavour");
+                    const details = flavourEl ? `${flavourEl.value} | ${option}` : option;
+                    items.push(`- ${name}: ${details} | Quantity: ${quantity}`);
                 }
             });
             return items;
