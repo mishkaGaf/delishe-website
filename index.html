@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6f071b">
+  <meta name="description" content="Delishé homemade treats and savouries, freshly prepared in Durban.">
+  <title>Delishé | Homemade Treats &amp; Savouries</title>
+  <style>
+    :root { --wine:#6f071b; --wine-dark:#47030e; --gold:#d9a62e; --gold-light:#f6d476; --cream:#fff7e8; --paper:#fffdf8; --ink:#2e1719; --muted:#725d5f; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:86px; }
+    body { margin:0; font-family:Arial,sans-serif; color:var(--ink); background:var(--cream); line-height:1.6; }
+    header { position:sticky; top:0; z-index:20; display:flex; justify-content:space-between; align-items:center; min-height:78px; padding:10px 6%; background:rgba(255,253,248,.96); border-bottom:1px solid #6f071b18; box-shadow:0 4px 18px #47030e10; }
+    .brand { display:flex; align-items:center; gap:10px; color:var(--wine); text-decoration:none; }
+    .brand img { width:54px; height:54px; object-fit:contain; border-radius:50%; }
+    .brand span { font-family:Georgia,serif; font-size:1.45rem; font-weight:bold; }
+    nav { display:flex; align-items:center; gap:22px; }
+    nav a { color:var(--wine); text-decoration:none; font-weight:bold; }
+    nav a:hover { color:#a9700b; }
+    .menu-toggle { display:none; border:0; background:transparent; color:var(--wine); font-size:1.8rem; }
+    section { padding:76px 6%; }
+    h1,h2,h3 { line-height:1.15; }
+    h1,h2 { font-family:Georgia,serif; color:var(--wine); }
+    h1 { font-size:clamp(2.7rem,7vw,5.8rem); margin:10px 0 18px; }
+    h2 { font-size:clamp(2rem,5vw,3.4rem); margin:8px 0 28px; }
+    .eyebrow { color:#a9700b; text-transform:uppercase; letter-spacing:.16em; font-weight:bold; font-size:.78rem; }
+    .lead { max-width:620px; font-size:1.12rem; color:var(--muted); }
+    .hero { min-height:78vh; display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:7%; background:radial-gradient(circle at 85% 25%,#e3ad4028,transparent 32%),linear-gradient(135deg,#fffaf0,#fff2d8); }
+    .hero-logo-wrap { display:grid; place-items:center; min-height:460px; border-radius:40px; background:linear-gradient(145deg,var(--wine),var(--wine-dark)); box-shadow:0 28px 70px #47030e38; overflow:hidden; position:relative; }
+    .hero-logo-wrap::after { content:""; position:absolute; width:280px; height:280px; border:1px solid #f6d47666; border-radius:50%; }
+    .hero-logo-wrap img { width:min(82%,430px); position:relative; z-index:1; border-radius:50%; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+    .button { display:inline-block; padding:14px 23px; border:0; border-radius:999px; color:white; background:var(--wine); text-decoration:none; font-weight:bold; cursor:pointer; }
+    .button.gold { color:var(--wine-dark); background:var(--gold-light); }
+    .button.outline { color:var(--wine); background:transparent; border:2px solid var(--wine); }
+    .benefits { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:-34px; padding:0 6% 30px; position:relative; z-index:2; }
+    .benefit { padding:20px; text-align:center; background:white; border-radius:16px; box-shadow:0 12px 30px #47030e12; }
+    .benefit strong { display:block; color:var(--wine); }
+    .menu-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .product { overflow:hidden; background:white; border:1px solid #6f071b18; border-radius:22px; box-shadow:0 14px 34px #47030e10; }
+    .product-top { height:190px; overflow:hidden; background:var(--cream); }
+    .product-top img { display:block; width:100%; height:100%; object-fit:cover; }
+    .product-top.brownies-top { display:grid; place-items:center; padding:12px; background:radial-gradient(circle at 50% 38%,#80543a 0,#4b2b20 62%,#2c1713 100%); }
+    .product-top.brownies-top img { width:auto; max-width:100%; height:100%; object-fit:contain; border-radius:12px; box-shadow:0 8px 22px #180b09a6; }
+    .product-top.placeholder { display:grid; place-items:center; font-size:3.2rem; color:var(--wine); background:linear-gradient(135deg,#fffaf0,#fff2d8); }
+    .product-body { padding:22px; }
+    .product h3 { color:var(--wine); font-size:1.35rem; margin:0 0 8px; }
+    .product p { color:var(--muted); margin:0; }
+    .price { display:block; margin-top:14px; color:#76502a; font-weight:bold; }
+    .order-section { color:white; background:linear-gradient(145deg,var(--wine),var(--wine-dark)); }
+    .order-section h2 { color:var(--gold-light); }
+    .order-layout { display:grid; grid-template-columns:1.15fr .85fr; gap:28px; align-items:start; }
+    .order-form,.summary { padding:26px; border-radius:22px; background:var(--paper); color:var(--ink); box-shadow:0 18px 45px #22010855; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    label { display:block; font-weight:bold; color:var(--wine); margin-bottom:5px; }
+    input,select,textarea { width:100%; padding:12px; border:1px solid #6f071b35; border-radius:10px; background:white; font:inherit; }
+    input:focus,select:focus,textarea:focus { outline:3px solid #d9a62e45; border-color:var(--gold); }
+    .full { grid-column:1 / -1; }
+    .order-products { display:grid; gap:10px; margin:18px 0; }
+    .selection-group { display:grid; gap:8px; }
+    .add-selection { justify-self:start; padding:8px 13px; margin:0 0 4px; font-size:.88rem; }
+    .cookie-help { margin:0; font-size:.88rem; color:var(--muted); }
+    .order-row { display:grid; grid-template-columns:auto 1fr 1fr 80px; gap:10px; align-items:center; padding:12px; border:1px solid #6f071b20; border-radius:12px; background:#fffaf0; }
+    .order-row.wide { grid-template-columns:auto 1fr 1fr 1fr 80px; }
+    .order-row input[type=checkbox] { width:20px; height:20px; accent-color:var(--wine); }
+    .order-row .item-name { font-weight:bold; color:var(--wine); }
+    .order-row .qty { min-width:68px; }
+    .summary { position:sticky; top:100px; }
+    .summary h3 { color:var(--wine); margin-top:0; }
+    #orderSummary { white-space:pre-wrap; min-height:220px; padding:16px; border-radius:12px; background:#fff7e8; color:#513a3c; }
+    .small-note { font-size:.88rem; color:var(--muted); }
+    .status { margin-top:10px; min-height:24px; font-weight:bold; color:#a40020; }
+    .about { background:white; }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+    .about-card { padding:30px; border-radius:24px; color:white; background:var(--wine); }
+    .about-card h3 { color:var(--gold-light); }
+    .contact { text-align:center; background:#fff1d4; }
+    footer { padding:24px; text-align:center; color:white; background:var(--wine-dark); }
+    .floating-whatsapp { position:fixed; right:18px; bottom:18px; z-index:30; width:58px; height:58px; display:grid; place-items:center; border-radius:50%; color:white; background:#25D366; text-decoration:none; font-size:1.7rem; box-shadow:0 8px 25px #0004; }
+    @media(max-width:850px) { .hero,.order-layout,.about-grid { grid-template-columns:1fr; } .menu-grid { grid-template-columns:repeat(2,1fr); } .benefits { grid-template-columns:repeat(2,1fr); margin-top:0; padding-top:24px; } .summary { position:static; } }
+    @media(max-width:620px) { header { padding:9px 5%; } .brand span { font-size:1.25rem; } .menu-toggle { display:block; } nav { display:none; position:absolute; left:0; right:0; top:74px; padding:18px 6%; flex-direction:column; align-items:flex-start; background:white; box-shadow:0 12px 24px #0002; } nav.open { display:flex; } section { padding:58px 6%; } .hero { min-height:auto; padding-top:52px; text-align:center; } .hero .lead { margin-left:auto; margin-right:auto; } .actions { justify-content:center; } .hero-logo-wrap { min-height:340px; } .menu-grid { grid-template-columns:1fr; } .form-grid { grid-template-columns:1fr; } .full { grid-column:auto; } .order-row,.order-row.wide { grid-template-columns:auto 1fr; } .order-row select,.order-row .qty { grid-column:2; } }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="#home"><img src="./index_files/logo.png" alt="Delishé logo"><span>Delishé</span></a>
+    <button class="menu-toggle" type="button" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+    <nav id="navMenu"><a href="#home">Home</a><a href="#menu">Menu</a><a href="#order">Order</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+  </header>
+  <main>
+    <section class="hero" id="home">
+      <div><p class="eyebrow">Homemade in Durban</p><h1>Something delicious for every moment.</h1><p class="lead">Sweet treats, savouries and family favourites—freshly prepared with care for gifting, sharing and special occasions.</p><div class="actions"><a class="button" href="#menu">Explore our menu</a><a class="button outline" href="#order">Build your order</a></div></div>
+      <div class="hero-logo-wrap"><img src="./index_files/logo.png" alt="Delishé burgundy and gold logo"></div>
+    </section>
+    <div class="benefits"><div class="benefit">♡<strong>Made with love</strong>Homemade favourites</div><div class="benefit">◷<strong>Pre-orders</strong>Plan at least 3 days ahead</div><div class="benefit">⌖<strong>Based in Durban</strong>Collection available</div><div class="benefit">▣<strong>Courier options</strong>At an additional cost</div></div>
+    <section id="menu">
+      <p class="eyebrow">Made for sharing</p><h2>Explore the Delishé menu</h2>
+      <div class="menu-grid">
+        <article class="product"><div class="product-top"><img src="./index_files/cookies.png" alt="Assorted chunky cookies"></div><div class="product-body"><h3>Chunky Cookies</h3><p>Each cookie is 90g. Choose from Classic Chocolate, Red Velvet, Lotus Biscoff, Oreo, Double Chocolate, and Pistachio with White Chocolate.</p><span class="price">R45 each · Box of 4 R172 · Box of 6 R240 · Box of 12 R520</span></div></article>
+        <article class="product"><div class="product-top"><img src="./index_files/pies-beautified.png" alt="Homemade golden pies, beautifully arranged"></div><div class="product-body"><h3>Homemade Pies</h3><p>Large and mini ready-to-bake pies in main and special flavours.</p><span class="price">From R150</span></div></article>
+        <article class="product"><div class="product-top"><img src="./index_files/crunchies.png" alt="Homemade oat and nut crunchies"></div><div class="product-body"><h3>Crunchie Slices</h3><p>Square oat-and-nut treats available in three sizes.</p><span class="price">From R85</span></div></article>
+        <article class="product"><div class="product-top"><img src="./index_files/chevro.png" alt="Sweet and spicy Chevro snack mix"></div><div class="product-body"><h3>Sweet &amp; Spicy Chevro</h3><p>A crunchy homemade snack for tea-time, lunchboxes and gifting.</p><span class="price">From R90</span></div></article>
+        <article class="product"><div class="product-top"><img src="./index_files/cupcakes.jpg" alt="Vanilla and chocolate cupcakes with rose-style frosting"></div><div class="product-body"><h3>Cupcakes</h3><p>Coffee, Vanilla and Chocolate, sold per dozen.</p><span class="price">Vanilla R150 · Coffee R170 · Chocolate R200 per dozen</span></div></article>
+        <article class="product"><div class="product-top brownies-top"><img src="./index_files/brownies.jpg" alt="Rich homemade chocolate brownies drizzled with chocolate"></div><div class="product-body"><h3>Classic Chocolate Brownies</h3><p>Rich, fudgy homemade chocolate brownies cut into generous squares.</p><span class="price">6 pieces R156 · 10 pieces R250</span></div></article>
+        <article class="product"><div class="product-top"><img src="./index_files/loaf-cakes-collage.png" alt="Madeira and date walnut loaf cakes"></div><div class="product-body"><h3>Loaf Cakes</h3><p>Date &amp; Almond Loaf and Madeira Loaf, baked fresh to order.</p><span class="price">Price on request</span></div></article>
+        <article class="product"><div class="product-top"><img src="./index_files/muffins-collage.png" alt="Blueberry lemon and bran muffins"></div><div class="product-body"><h3>Muffins</h3><p>Blueberry &amp; Lemon, Lemon &amp; Poppy Seeds, Berries, and Bran Muffin.</p><span class="price">1 Muffin R35 · Box of 6 R204–R396 · Box of 12 R396</span></div></article>
+        <article class="product"><div class="product-top"><img src="./index_files/samoosas.webp" alt="Golden chicken and mince samoosas, ready to fry"></div><div class="product-body"><h3>Samoosas</h3><p>Unfried chicken or mince samoosas, prepared for you to fry fresh.</p><span class="price">Chicken · 1 dozen R45<br>Mince · 1 dozen R50</span></div></article>
+        <article class="product"><div class="product-top"><img src="./index_files/square-pies.webp" alt="Unbaked square chicken and mince pies"></div><div class="product-body"><h3>Square Pies</h3><p>Chicken or mince square pies, supplied unbaked.</p><span class="price">Chicken · 6 for R70 · 1 dozen R65<br>Mince · 6 for R75 · 1 dozen R70</span></div></article>
+        <article class="product"><div class="product-top"><img src="./index_files/iced-coffee.webp" alt="Chilled iced coffee in a glass"></div><div class="product-body"><h3>Iced Coffee</h3><p>Cold, creamy iced coffee, freshly prepared.</p><span class="price">R50</span></div></article>
+        <article class="product"><div class="product-top"><img src="./index_files/strawberry-milkshake.webp" alt="Strawberry milkshake"></div><div class="product-body"><h3>Strawberry Milkshake</h3><p>A smooth strawberry milkshake, served chilled.</p><span class="price">R50</span></div></article>
+        <article class="product"><div class="product-top"><img src="./index_files/lotus-cupcakes.webp" alt="Lotus filled vanilla cupcakes with Lotus buttercream"></div><div class="product-body"><h3>Lotus Cupcakes</h3><p>Vanilla sponge filled with Lotus and topped with Lotus buttercream.</p><span class="price">6 for R210 · 12 for R408</span></div></article>
+        <article class="product"><div class="product-top"><img src="./index_files/chocolate-ganache-cupcakes.webp" alt="Chocolate cupcakes with silky ganache"></div><div class="product-body"><h3>Chocolate Ganache Cupcakes</h3><p>Chocolate sponge topped with a silky chocolate ganache.</p><span class="price">6 for R210 · 12 for R408</span></div></article>
+        <article class="product"><div class="product-top"><img src="./index_files/chocolate-caramel-lamingtons.webp" alt="Chocolate caramel lamingtons"></div><div class="product-body"><h3>Chocolate Caramel Lamingtons</h3><p>Chocolate sponge dipped and finished with caramel and coconut.</p><span class="price">6 for R180 · 12 for R248</span></div></article>
+        <article class="product"><div class="product-top"><img src="./index_files/strawberry-cupcakes.webp" alt="Vanilla cupcakes with strawberry buttercream"></div><div class="product-body"><h3>Strawberry Buttercream Cupcakes</h3><p>Vanilla sponge filled and topped with strawberry buttercream.</p><span class="price">6 for R204 · 12 for R396</span></div></article>
+      </div>
+    </section>
+    <section class="order-section" id="order">
+      <p class="eyebrow">Quick and easy</p><h2>Build your WhatsApp order</h2>
+      <div class="order-layout">
+        <form class="order-form" id="orderForm" onsubmit="sendWhatsAppOrder(event)">
+          <div class="form-grid">
+            <div><label for="customerName">Your name *</label><input id="customerName" required placeholder="Enter your name"></div>
+            <div><label for="customerPhone">Your phone number</label><input id="customerPhone" inputmode="tel" placeholder="e.g. 082 000 0000"></div>
+            <div><label for="requiredDate">Date required *</label><input id="requiredDate" type="date" required></div>
+            <div><label for="orderMethod">Receive order *</label><select id="orderMethod" required><option value="">Select one</option><option>Collection</option><option>Courier / delivery enquiry</option></select></div>
+          </div>
+          <h3>Select what you want to order</h3>
+          <div class="order-products" id="orderProducts">
+            <div id="cookieSelections" class="selection-group"><div class="order-row wide cookie-row"><input class="order-check" type="checkbox"><span class="item-name">Chunky Cookies (90g each)</span><select class="item-flavour" aria-label="Cookie flavour"><option>Classic Chocolate</option><option>Red Velvet</option><option>Lotus Biscoff</option><option>Oreo</option><option>Double Chocolate</option><option>Pistachio with White Chocolate</option></select><select class="item-option" aria-label="Cookie size"><option>Each — R45</option><option>Box of 4 — R172</option><option>Box of 6 — R240</option><option>Box of 12 — R520</option></select><input class="qty" type="number" min="1" value="1" aria-label="Cookie quantity"></div><button class="button outline add-selection" type="button" id="addCookieSelection">+ Add another cookie flavour</button></div><p class="cookie-help">Add a separate line for each flavour, size and quantity you want.</p>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Large Pies</span><select class="item-option"><option>6 Main — R280</option><option>12 Main — R540</option><option>6 Special — R300</option><option>12 Special — R588</option></select><input class="qty" type="number" min="1" value="1" aria-label="Large pie quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Mini Pies</span><select class="item-option"><option>6 Main — R150</option><option>12 Main — R288</option><option>6 Special — R192</option><option>12 Special — R372</option></select><input class="qty" type="number" min="1" value="1" aria-label="Mini pie quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Crunchie Slices</span><select class="item-option"><option>250g — R85</option><option>500g — R120</option><option>1kg — R200</option></select><input class="qty" type="number" min="1" value="1" aria-label="Crunchie quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Chevro</span><select class="item-option"><option>500g — R90</option><option>1kg — R170</option></select><input class="qty" type="number" min="1" value="1" aria-label="Chevro quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Classic Chocolate Brownies</span><select class="item-option"><option>6 pieces — R156</option><option>10 pieces — R250</option></select><input class="qty" type="number" min="1" value="1" aria-label="Brownie quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Loaf Cakes</span><select class="item-option"><option>Date &amp; Almond Loaf — Price on request</option><option>Madeira Loaf — Price on request</option></select><input class="qty" type="number" min="1" value="1" aria-label="Loaf cake quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Cupcakes</span><select class="item-option"><option>Vanilla — R150 per dozen</option><option>Coffee — R170 per dozen</option><option>Chocolate — R200 per dozen</option></select><input class="qty" type="number" min="1" value="1" aria-label="Cupcake quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Muffins</span><select class="item-option"><option>1 Muffin — R35</option><option>Box of 6 — Blueberry &amp; Lemon — R204</option><option>Box of 6 — Lemon &amp; Poppy Seeds — R396</option><option>Box of 6 — Berries — R396</option><option>Box of 6 — Bran Muffin — R396</option><option>Box of 12 — Blueberry &amp; Lemon — R396</option><option>Box of 12 — Lemon &amp; Poppy Seeds — R396</option><option>Box of 12 — Berries — R396</option><option>Box of 12 — Bran Muffin — R396</option></select><input class="qty" type="number" min="1" value="1" aria-label="Muffin quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Chicken Samoosas (unfried)</span><select class="item-option"><option>1 dozen — R45</option></select><input class="qty" type="number" min="1" value="1" aria-label="Chicken samoosa dozen quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Mince Samoosas (unfried)</span><select class="item-option"><option>1 dozen — R50</option></select><input class="qty" type="number" min="1" value="1" aria-label="Mince samoosa dozen quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Square Chicken Pies (unbaked)</span><select class="item-option"><option>6 — R70</option><option>1 dozen — R65</option></select><input class="qty" type="number" min="1" value="1" aria-label="Square chicken pie quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Square Mince Pies (unbaked)</span><select class="item-option"><option>6 — R75</option><option>1 dozen — R70</option></select><input class="qty" type="number" min="1" value="1" aria-label="Square mince pie quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Iced Coffee</span><select class="item-option"><option>Each — R50</option></select><input class="qty" type="number" min="1" value="1" aria-label="Iced coffee quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Strawberry Milkshake</span><select class="item-option"><option>Each — R50</option></select><input class="qty" type="number" min="1" value="1" aria-label="Milkshake quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Lotus Cupcakes</span><select class="item-option"><option>Box of 6 — R210</option><option>Box of 12 — R408</option></select><input class="qty" type="number" min="1" value="1" aria-label="Lotus cupcake box quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Chocolate Ganache Cupcakes</span><select class="item-option"><option>Box of 6 — R210</option><option>Box of 12 — R408</option></select><input class="qty" type="number" min="1" value="1" aria-label="Ganache cupcake box quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Chocolate Caramel Lamingtons</span><select class="item-option"><option>Box of 6 — R180</option><option>Box of 12 — R248</option></select><input class="qty" type="number" min="1" value="1" aria-label="Lamington box quantity"></div>
+            <div class="order-row"><input class="order-check" type="checkbox"><span class="item-name">Strawberry Buttercream Cupcakes</span><select class="item-option"><option>Box of 6 — R204</option><option>Box of 12 — R396</option></select><input class="qty" type="number" min="1" value="1" aria-label="Strawberry cupcake box quantity"></div>
+          </div>
+          <div class="form-grid">
+            <div class="full"><label for="flavours">Flavours or fillings</label><textarea id="flavours" rows="3" placeholder="Example: 3 creamy chicken and 3 chicken tikka pies"></textarea></div>
+            <div class="full"><label for="notes">Additional notes</label><textarea id="notes" rows="3" placeholder="Allergies, delivery area or special request"></textarea></div>
+          </div>
+          <div class="actions"><button class="button" type="submit">Send order on WhatsApp</button><button class="button outline" type="button" onclick="clearOrder()">Clear form</button></div>
+          <div class="status" id="formStatus" aria-live="polite"></div>
+          <p class="small-note">Delishé will confirm availability, final price and collection or delivery details.</p>
+        </form>
+        <aside class="summary"><h3>Your order summary</h3><div id="orderSummary"></div><p class="small-note">The summary updates automatically as you make your selections.</p></aside>
+      </div>
+    </section>
+    <section class="about" id="about"><div class="about-grid"><div><p class="eyebrow">Our story</p><h2>Food made for good moments.</h2><p class="lead">Delishé is a Durban-based home food business built around care, flavour and the joy of sharing. Every order is prepared for your family, gifting or special occasion.</p></div><div class="about-card"><h3>How ordering works</h3><p>1. Select your items.<br>2. Choose a required date.<br>3. Send the prepared WhatsApp message.<br>4. Wait for availability and price confirmation.<br>5. Confirm payment and collection or delivery.</p></div></div></section>
+    <section class="contact" id="contact"><p class="eyebrow">We would love to hear from you</p><h2>Contact Delishé</h2><p><strong>WhatsApp:</strong> 063 497 7581<br><strong>Email:</strong> <a href="mailto:delishe2026@gmail.com">delishe2026@gmail.com</a><br><strong>Location:</strong> Durban</p><a class="button gold" href="#order">Start your order</a></section>
+  </main>
+  <a class="floating-whatsapp" href="#order" aria-label="Build a WhatsApp order">◉</a>
+  <footer>© 2026 Delishé — Made with love, tasted to perfection!</footer>
+  <script>
+    const whatsappNumber = "27634977581";
+    function toggleMenu(){document.getElementById("navMenu").classList.toggle("open")}
+    document.querySelectorAll("nav a").forEach(link=>link.addEventListener("click",()=>document.getElementById("navMenu").classList.remove("open")));
+    function selectedItems(){const items=[];document.querySelectorAll(".order-row").forEach(row=>{if(row.querySelector(".order-check").checked){const name=row.querySelector(".item-name").textContent;const option=row.querySelector(".item-option").value;const quantity=Math.max(1,Number(row.querySelector(".qty").value)||1);const flavour=row.querySelector(".item-flavour");items.push(`- ${name}: ${flavour?flavour.value+" | ":""}${option} | Quantity: ${quantity}`)}});return items}
+    function buildMessage(){const name=document.getElementById("customerName").value.trim()||"Not entered";const phone=document.getElementById("customerPhone").value.trim()||"Not entered";const date=document.getElementById("requiredDate").value||"Not selected";const method=document.getElementById("orderMethod").value||"Not selected";const flavours=document.getElementById("flavours").value.trim()||"None entered";const notes=document.getElementById("notes").value.trim()||"None";const items=selectedItems();return `Hello Delishé, I would like to place an order.\n\nCustomer: ${name}\nPhone: ${phone}\nDate required: ${date}\nCollection/delivery: ${method}\n\nORDER:\n${items.length?items.join("\n"):"No items selected"}\n\nFlavours/fillings: ${flavours}\nAdditional notes: ${notes}\n\nPlease confirm availability and the final total. Thank you.`}
+    function updateSummary(){document.getElementById("orderSummary").textContent=buildMessage()}
+    function sendWhatsAppOrder(event){event.preventDefault();const status=document.getElementById("formStatus");if(!selectedItems().length){status.textContent="Please select at least one product.";return}if(!document.getElementById("customerName").value.trim()||!document.getElementById("requiredDate").value||!document.getElementById("orderMethod").value){status.textContent="Please enter your name, required date and collection or delivery choice.";return}status.textContent="Opening WhatsApp with your order...";window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(buildMessage())}`,"_blank")}
+    function clearOrder(){document.getElementById("orderForm").reset();document.getElementById("formStatus").textContent="";updateSummary()}
+    const orderForm=document.getElementById("orderForm");
+    orderForm.addEventListener("input",updateSummary);
+    orderForm.addEventListener("change",updateSummary);
+
+    // Cookie flavours and pack sizes can be ordered on separate lines.
+    const cookieGroup=document.getElementById("cookieSelections");
+    const cookieButton=document.createElement("button");
+    cookieButton.type="button";
+    cookieButton.className="button outline add-selection";
+    cookieButton.textContent="+ Add another cookie selection";
+    cookieGroup.appendChild(cookieButton);
+
+    // Let customers add a separate line for any product, so different options
+    // and quantities appear as separate lines in the WhatsApp summary.
+    document.querySelectorAll(".order-row:not(.cookie-row)").forEach(row=>{
+      const group=document.createElement("div");
+      group.className="selection-group";
+      row.parentNode.insertBefore(group,row);
+      group.appendChild(row);
+      const button=document.createElement("button");
+      button.type="button";
+      button.className="button outline add-selection";
+      button.textContent="+ Add another " + row.querySelector(".item-name").textContent.trim();
+      group.appendChild(button);
+    });
+
+    document.getElementById("orderProducts").addEventListener("click",event=>{
+      const button=event.target.closest(".add-selection");
+      if(!button)return;
+      const group=button.closest(".selection-group");
+      const rows=group.querySelectorAll(".order-row");
+      const source=rows[rows.length-1];
+      const row=source.cloneNode(true);
+      row.querySelector(".order-check").checked=false;
+      row.querySelectorAll("select").forEach((select,index)=>select.selectedIndex=source.querySelectorAll("select")[index].selectedIndex);
+      row.querySelector(".qty").value="1";
+      group.insertBefore(row,button);
+      updateSummary();
+      row.querySelector(".order-check").focus();
+    });
+    updateSummary();
+  </script>
+</body>
+</html>
